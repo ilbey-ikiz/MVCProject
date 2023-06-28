@@ -9,25 +9,45 @@
     <link rel="stylesheet" href="~/MVCProject.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCProject</a>
+    <header class="m-4">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3 rounded-3">
+            <div class="container-fluid mx-4">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="https://i.hizliresim.com/c5gqcgb.png" height="80"/>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <div>
+
+                    
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light fs-4 mx-2" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light fs-4 mx-2" asp-area="" asp-controller="Home" asp-action="Privacy">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fs-4 mx-2" asp-area="" asp-controller="Home" asp-action="Privacy">Collaborations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fs-4 mx-2" asp-area="" asp-controller="Home" asp-action="Privacy">Sample Strorages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fs-4 mx-2" asp-area="" asp-controller="Home" asp-action="index">Contact</a>
                         </li>
                     </ul>
+                    </div>
+                <div>
+                    <a class="btn btn-light text-primary fs-6 mx-2" href="">Login</a>
+                    <a class="btn btn-light text-primary fs-6 mx-2" href="">Register</a>
+                </div>
                 </div>
             </div>
+
         </nav>
     </header>
     <div class="container">

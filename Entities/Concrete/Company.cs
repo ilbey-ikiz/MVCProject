@@ -8,7 +8,6 @@
         public string City { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public ICollection<Storage> Storages { get; set; }
         public ICollection<Employee> Employees { get; set; }
     }
 }

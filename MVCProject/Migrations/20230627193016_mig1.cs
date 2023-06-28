@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MVCProject.Migrations
 {
-    public partial class mig_4 : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,20 @@ namespace MVCProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Storages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StorageName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Storages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
@@ -77,27 +91,6 @@ namespace MVCProject.Migrations
                     table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Employees_Companies_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Companies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Storages",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StorageName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CompanyId = table.Column<int>(type: "int", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Storages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Storages_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
@@ -176,6 +169,30 @@ namespace MVCProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "EmployeeStorage",
+                columns: table => new
+                {
+                    EmployeesId = table.Column<int>(type: "int", nullable: false),
+                    StoragesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeStorage", x => new { x.EmployeesId, x.StoragesId });
+                    table.ForeignKey(
+                        name: "FK_EmployeeStorage_Employees_EmployeesId",
+                        column: x => x.EmployeesId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EmployeeStorage_Storages_StoragesId",
+                        column: x => x.StoragesId,
+                        principalTable: "Storages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ColumnProduct_ProductsId",
                 table: "ColumnProduct",
@@ -192,14 +209,14 @@ namespace MVCProject.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeeStorage_StoragesId",
+                table: "EmployeeStorage",
+                column: "StoragesId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductStorage_StorageId",
                 table: "ProductStorage",
                 column: "StorageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Storages_CompanyId",
-                table: "Storages",
-                column: "CompanyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,13 +228,16 @@ namespace MVCProject.Migrations
                 name: "ColumnStorage");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "EmployeeStorage");
 
             migrationBuilder.DropTable(
                 name: "ProductStorage");
 
             migrationBuilder.DropTable(
                 name: "Columns");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Products");

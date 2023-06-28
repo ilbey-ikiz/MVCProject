@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCProject.Migrations
 {
     [DbContext(typeof(StorageManagementContext))]
-    [Migration("20230626005311_mig_4")]
-    partial class mig_4
+    [Migration("20230627193016_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,21 @@ namespace MVCProject.Migrations
                     b.HasIndex("StoragesId");
 
                     b.ToTable("ColumnStorage");
+                });
+
+            modelBuilder.Entity("EmployeeStorage", b =>
+                {
+                    b.Property<int>("EmployeesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoragesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeesId", "StoragesId");
+
+                    b.HasIndex("StoragesId");
+
+                    b.ToTable("EmployeeStorage");
                 });
 
             modelBuilder.Entity("MVCProject.Entities.Concrete.Column", b =>
@@ -189,9 +204,6 @@ namespace MVCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -200,8 +212,6 @@ namespace MVCProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Storages");
                 });
@@ -251,21 +261,25 @@ namespace MVCProject.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EmployeeStorage", b =>
+                {
+                    b.HasOne("MVCProject.Entities.Concrete.Employee", null)
+                        .WithMany()
+                        .HasForeignKey("EmployeesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MVCProject.Entities.Concrete.Storage", null)
+                        .WithMany()
+                        .HasForeignKey("StoragesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MVCProject.Entities.Concrete.Employee", b =>
                 {
                     b.HasOne("MVCProject.Entities.Concrete.Company", "Company")
                         .WithMany("Employees")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("MVCProject.Entities.Concrete.Storage", b =>
-                {
-                    b.HasOne("MVCProject.Entities.Concrete.Company", "Company")
-                        .WithMany("Storages")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -291,8 +305,6 @@ namespace MVCProject.Migrations
             modelBuilder.Entity("MVCProject.Entities.Concrete.Company", b =>
                 {
                     b.Navigation("Employees");
-
-                    b.Navigation("Storages");
                 });
 #pragma warning restore 612, 618
         }

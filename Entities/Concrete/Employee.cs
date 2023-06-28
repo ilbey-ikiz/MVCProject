@@ -13,7 +13,7 @@ namespace MVCProject.Entities.Concrete
         public EmployeeType EmployeeType { get; set; }
         public int CompanyId { get; set; }
         public Company Company { get; set; }
-        //public ICollection<Storage> Storages { get; set; }
+        public ICollection<Storage> Storages { get; set; }
 
 
     }
