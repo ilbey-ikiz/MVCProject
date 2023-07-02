@@ -15,5 +15,6 @@ namespace BLL.Repository.Concrete
         {
             this.dbContext = dbContext;
         }
+
     }
 }
