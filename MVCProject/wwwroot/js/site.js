@@ -68,6 +68,26 @@ $(document).ready(function () {
 
     $(".submit").click(function () {
         return false;
-    })
+    });
+
+    function Login(mail, password) {
+        let person = {
+            mail : $("#form3Example3").val(),
+            password : $("#form3Example4").val()
+        }
+        $.ajax({
+            url: "/Login/IsPeronExistControl",
+            type: "post",
+            data: person,
+            success: function (response) {
+                if (response == "ok") {
+
+                }
+                else {
+                    $("#error").html("<p>NO PERSON</p>")
+                }
+            }
+        })
+    }
 
 });

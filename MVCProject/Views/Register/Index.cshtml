@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
 <!-- MultiStep Form -->
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row justify-content-center mt-0">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
@@ -10,7 +10,7 @@
                 <p>Fill all form field to go to next step</p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform"  method="post">
+                        <form id="msform" method="post">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Company</strong></li>
@@ -24,6 +24,7 @@
                                     <div class="control-group">
                                         <input id="companyname" type="text" name="companyname" placeholder="Enter your company name." />
                                         <label for="companyname">Company Name</label>
+                                        <span asp-validation-for="Company.CompanyName"></span>
                                     </div>
                                     <div class="control-group">
                                         <input id="sector" type="text" name="sector" placeholder="Enter your company sector." />
@@ -60,7 +61,7 @@
                                         <input id="firstname" type="text" name="firstname" asp-for="Employee.FirstName" placeholder="Enter administrator first name." />
                                         <label for="firstname">First Name</label>
                                         <span asp-validation-for="Employee.FirstName"></span>
-                                        
+
                                     </div>
                                     <div class="control-group">
                                         <input id="lastname" type="text" name="lastname" placeholder="Enter administrator last name." />
@@ -82,7 +83,7 @@
                                         <input id="admintel" type="tel" name="admintel" placeholder="Enter administrator contact no." />
                                         <label for="admintel">Phone</label>
                                     </div>
-                                    
+
                                 </div>
                                 <input type="button" name="previous" class="btn btn-secondary mx-4 previous action-button-previous" value="Previous" />
                                 <input type="button" name="next" class="btn btn-primary mx-4 next action-button" value="Next Step" />
@@ -151,6 +152,12 @@
                                     <div class="row justify-content-center">
                                         <div class="col-7 text-center">
                                             <h5>You Have Successfully Register.</h5>
+                                        </div>
+
+                                    </div>
+                                    <div class="row justify-content-center ">
+                                        <div class="col-7 text-center w-100 ">
+                                            <a action="LoginPage" class="btn btn-success mt-4 w-50">Login</a>
                                         </div>
                                     </div>
                                 </div>

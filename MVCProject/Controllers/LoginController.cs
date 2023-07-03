@@ -25,7 +25,7 @@ namespace MVCProject.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(new EmployeeLoginVM());
         }
 
         [HttpPost]
@@ -46,6 +46,16 @@ namespace MVCProject.Controllers
                 return View("Index", userVm);
             }
             return RedirectToAction("Index" , "StorageController");
+        }
+
+        public IActionResult IsPeronExistControl(EmployeeLoginVM loginVM)
+        {
+            Employee employee =employeeRepository.GetEmployeeByMailAndPassword(loginVM.Mail, loginVM.Password);
+            if (employee is null)
+            {
+                return Json("ok");
+            }
+            return Json("fail");
         }
 
     }

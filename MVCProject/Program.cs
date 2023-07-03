@@ -25,6 +25,7 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>)
 builder.Services.AddFluentValidation(fv =>
 {
     fv.RegisterValidatorsFromAssemblyContaining<EmployeeValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<EmployeeCompanyValidator>();
     fv.DisableDataAnnotationsValidation=true;
     fv.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("en");
     });
