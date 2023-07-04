@@ -53,7 +53,7 @@ namespace MVCProject.Controllers
             Employee employee =employeeRepository.GetEmployeeByMailAndPassword(loginVM.Mail, loginVM.Password);
             if (employee is not null)
             {
-                return Json("ok");
+                return Json(employee.Id);
             }
             return Json("fail");
         }

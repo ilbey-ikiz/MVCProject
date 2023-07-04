@@ -84,8 +84,8 @@ function Login() {
         type: "get",
         data: person,
         success: function (response) {
-            if (response == "ok") {
-                window.location.href = "/UserHome/Index";
+            if (respone !="fail" ) {
+                window.location.href = "/UserHome/Index"+response;
             }
             else {
                 $("#error").html("<h4>No Person</h4>")
