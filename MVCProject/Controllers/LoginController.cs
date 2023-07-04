@@ -51,7 +51,7 @@ namespace MVCProject.Controllers
         public IActionResult IsPeronExistControl(EmployeeLoginVM loginVM)
         {
             Employee employee =employeeRepository.GetEmployeeByMailAndPassword(loginVM.Mail, loginVM.Password);
-            if (employee is null)
+            if (employee is not null)
             {
                 return Json("ok");
             }

@@ -1,5 +1,6 @@
 ﻿@model EmployeeLoginVM
 
+            <div id="error"> sdfsdfsdf</div>
 
 <div style="margin-top:15%">
     <div class="row d-flex justify-content-center align-items-center">
@@ -9,8 +10,7 @@
         </div>
        
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <div id="error"></div>
-            <form asp-action="Index" method="post">
+           @* <form >*@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label asp-for="Mail" class="form-label" for="form3Example3">Email address</label>
@@ -37,13 +37,19 @@
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
-                    <button id="login" onclick="Login(@Model.Mail,@Model.Password)" type="submit" class="btn btn-primary btn-lg"
+                    <button id="login" onclick="Login()" type="submit" class="btn btn-primary btn-lg"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">
                         Login
                     </button>
                 </div>
 
-            </form>
+          @*  </form>*@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

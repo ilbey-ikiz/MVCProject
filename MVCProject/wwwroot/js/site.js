@@ -8,6 +8,7 @@ $(document).ready(function () {
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
 
+
     $(".next").click(function () {
 
         current_fs = $(this).parent();
@@ -70,24 +71,25 @@ $(document).ready(function () {
         return false;
     });
 
-    function Login(mail, password) {
-        let person = {
-            mail : $("#form3Example3").val(),
-            password : $("#form3Example4").val()
-        }
-        $.ajax({
-            url: "/Login/IsPeronExistControl",
-            type: "post",
-            data: person,
-            success: function (response) {
-                if (response == "ok") {
-
-                }
-                else {
-                    $("#error").html("<p>NO PERSON</p>")
-                }
-            }
-        })
-    }
 
 });
+
+function Login() {
+    let person = {
+        mail: $("#form3Example3").val(),
+        password: $("#form3Example4").val(),
+    }
+    $.ajax({
+        url: "/Login/IsPeronExistControl",
+        type: "get",
+        data: person,
+        success: function (response) {
+            if (response == "ok") {
+                window.location.href = "/UserHome/Index";
+            }
+            else {
+                $("#error").html("<h4>No Person</h4>")
+            }
+        }
+    })
+}
