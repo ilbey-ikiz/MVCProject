@@ -135,8 +135,8 @@ namespace MVCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");

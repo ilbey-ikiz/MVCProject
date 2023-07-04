@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCProject.Migrations
 {
     [DbContext(typeof(StorageManagementContext))]
-    [Migration("20230627193016_mig1")]
+    [Migration("20230704201849_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,8 +137,8 @@ namespace MVCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");

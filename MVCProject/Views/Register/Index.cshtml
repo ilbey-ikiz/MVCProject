@@ -22,29 +22,34 @@
                                 <div class="form-card">
                                     <h2 class="fs-title text-center">Company Information</h2>
                                     <div class="control-group">
-                                        <input id="companyname" type="text" name="companyname" placeholder="Enter your company name." />
+                                        <input id="companyname" type="text" asp-for="Company.CompanyName" placeholder="Enter your company name." />
                                         <label for="companyname">Company Name</label>
                                         <span asp-validation-for="Company.CompanyName"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="sector" type="text" name="sector" placeholder="Enter your company sector." asp-for="Company.Sector" />
+                                        <input id="sector" type="text" asp-for="Company.Sector" placeholder="Enter your company sector." />
                                         <label for="sector">Sector</label>
+                                        <span asp-validation-for="Company.Sector"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="address" type="text" name="address" placeholder="Enter your company address." />
+                                        <input id="address" type="text" asp-for="Company.Address" placeholder="Enter your company address." />
                                         <label for="address">Address</label>
+                                        <span asp-validation-for="Company.Address"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="country" type="text" name="country" placeholder="Enter the country where your company is located." />
+                                        <input id="country" type="text" asp-for="Company.Country" placeholder="Enter the country where your company is located." />
                                         <label for="country">Country</label>
+                                        <span asp-validation-for="Company.Country"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="city" type="text" name="city" placeholder="Enter the city where your company is located." />
+                                        <input id="city" type="text" asp-for="Company.City" placeholder="Enter the city where your company is located." />
                                         <label for="city">City</label>
+                                        <span asp-validation-for="Company.City"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="companyphone" type="tel" name="companyphone" placeholder="Enter your company contact number." />
+                                        <input id="companyphone" type="tel" asp-for="Company.Phone" placeholder="Enter your company contact number." />
                                         <label for="companyphone">Company Phone</label>
+                                        <span asp-validation-for="Company.Phone"></span>
                                     </div>
                                 </div>
                                 <input type="button" name="next" class="btn btn-primary next action-button " value="Next Step" />
@@ -54,34 +59,38 @@
                                     <h2 class="fs-title">Administrator Information</h2>
                                     <p>You have to add one administrator for your company. </p>
                                     <div class="control-group">
-                                        <input id="email" type="email" name="email" placeholder="Enter administrator email address for login id." />
+                                        <input id="email" type="email" asp-for="Employee.Mail" placeholder="Enter administrator email address for login id." />
                                         <label for="email">Email</label>
+                                        <span asp-validation-for="Employee.Mail"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="firstname" type="text" name="firstname" asp-for="Employee.FirstName" placeholder="Enter administrator first name." />
+                                        <input id="firstname" type="text" asp-for="Employee.FirstName" placeholder="Enter administrator first name." />
                                         <label for="firstname">First Name</label>
                                         <span asp-validation-for="Employee.FirstName"></span>
-
                                     </div>
                                     <div class="control-group">
-                                        <input id="lastname" type="text" name="lastname" placeholder="Enter administrator last name." />
+                                        <input id="lastname" type="text" asp-for="Employee.LastName" placeholder="Enter administrator last name." />
                                         <label for="lastname">Last Name</label>
+                                        <span asp-validation-for="Employee.LastName"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="password" type="password" name="password" placeholder="Enter administrator password." />
+                                        <input id="password" type="password" asp-for="Employee.Password" placeholder="Enter administrator password." />
                                         <label for="password">Password</label>
+                                        <span asp-validation-for="Employee.Password"></span>
                                     </div>
                                     <div class="control-group">
                                         <input id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm password." />
                                         <label for="confirmpassword">Confirm Password</label>
                                     </div>
                                     <div class="control-group">
-                                        <input id="date" type="date" name="date" style=" color:#8c8c8c;font-weight: normal;" placeholder="Enter administrator birth date." />
-                                        <label for="date">Birth Date</label>
+                                        <input id="birthDate" type="date" asp-for="Employee.BirthDate" style=" color:#8c8c8c;font-weight: normal;" placeholder="Enter administrator birth date." />
+                                        <label for="birthDate">Birth Date</label>
+                                        <span asp-validation-for="Employee.BirthDate"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="admintel" type="tel" name="admintel" placeholder="Enter administrator contact no." />
+                                        <input id="admintel" type="tel"  asp-for="Employee.Phone" placeholder="Enter administrator contact no." />
                                         <label for="admintel">Phone</label>
+                                        <span asp-validation-for="Employee.Phone"></span>
                                     </div>
 
                                 </div>
@@ -139,6 +148,7 @@
                                 <input type="button" name="make_payment" class="next action-button" value="Confirm" />
                             </fieldset>
                             -->
+
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title text-center">Success !</h2>
@@ -162,6 +172,7 @@
                                     </div>
                                 </div>
                             </fieldset>
+                        
                         </form>
                     </div>
                 </div>

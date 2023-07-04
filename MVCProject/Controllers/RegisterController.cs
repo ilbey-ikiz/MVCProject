@@ -38,20 +38,22 @@ namespace MVCProject.Controllers
             }
 
             var company =mapper.Map<Company>(ecVM.Company);
-            var employee =mapper.Map<Employee>(ecVM.Employee);
-            employee.EmployeeType = Entities.Enums.EmployeeType.Admin;
             bool isAddedCom =CompanyRepository.Add(company);
+            var employee =mapper.Map<Employee>(ecVM.Employee);
+            employee.CompanyId = company.Id;
+            employee.EmployeeType = Entities.Enums.EmployeeType.Admin;
             bool isAddemEmp=EmployeeRepository.Add(employee);
 
             if(isAddedCom && isAddemEmp)
             {
-                return View("Index");
+                // return new EmptyResult();
+                Thread.Sleep(10000);
+                return RedirectToAction("Index", "Login");
+
             }
 
            //return RedirectToAction("Index" , "Login");
            return View();
         }
-
-
     }
 }

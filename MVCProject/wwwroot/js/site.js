@@ -74,6 +74,17 @@ $(document).ready(function () {
 
 });
 
+function GetSuccess() {
+    $.ajax({
+        url: "/Register/Success",
+        type: "get",
+        success: function (response) {
+            $("#successFeield").html(response)
+        }
+    });
+}
+
+
 function Login() {
     let person = {
         mail: $("#form3Example3").val(),
@@ -84,12 +95,12 @@ function Login() {
         type: "get",
         data: person,
         success: function (response) {
-            if (response !="fail" ) {
-                window.location.href = "/UserHome/Index/"+response;
+            if (response != "fail") {
+                window.location.href = "/UserHome/Index/" + response;
             }
             else {
                 $("#error").html("<h4>No Person</h4>")
             }
         }
-    })
+    });
 }
