@@ -10,7 +10,7 @@
                 <p>Fill all form field to go to next step</p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform" method="post">
+                        <form id="msform" method="post" asp-action="Index" method="post">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Company</strong></li>
@@ -27,7 +27,7 @@
                                         <span asp-validation-for="Company.CompanyName"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="sector" type="text" name="sector" placeholder="Enter your company sector." />
+                                        <input id="sector" type="text" name="sector" placeholder="Enter your company sector." asp-for="Company.Sector" />
                                         <label for="sector">Sector</label>
                                     </div>
                                     <div class="control-group">
@@ -85,8 +85,8 @@
                                     </div>
 
                                 </div>
-                                <input type="button" name="previous" class="btn btn-secondary mx-4 previous action-button-previous" value="Previous" />
-                                <input type="button" name="next" class="btn btn-primary mx-4 next action-button" value="Next Step" />
+                                <input type="button" name="previous" class="btn btn-secondary mx-4 previous action-button-previous" value="Previous"  />
+                                <input type="submit" name="next" class="btn btn-primary mx-4 next action-button" value="Next Step" />
                             </fieldset>
                             <!--
                             <fieldset>
@@ -157,7 +157,7 @@
                                     </div>
                                     <div class="row justify-content-center ">
                                         <div class="col-7 text-center w-100 ">
-                                            <a action="LoginPage" class="btn btn-success mt-4 w-50">Login</a>
+                                            <a  class="btn btn-success mt-4 w-50">Login</a>
                                         </div>
                                     </div>
                                 </div>

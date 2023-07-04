@@ -9,7 +9,7 @@ namespace MVCProject.Models
             Company = new();
             Employee = new();
         }
-        public Company Company { get; set; }
-        public Employee Employee { get; set; }
+        public CompanyRegisterVM Company { get; set; }
+        public EmployeeRegisterVM Employee { get; set; }
     }
 }

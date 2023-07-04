@@ -36,6 +36,18 @@ namespace MVCProject.Controllers
                 result.AddToModelState(this.ModelState);
                 return View("Index", ecVM);
             }
+
+            var company =mapper.Map<Company>(ecVM.Company);
+            var employee =mapper.Map<Employee>(ecVM.Employee);
+            employee.EmployeeType = Entities.Enums.EmployeeType.Admin;
+            bool isAddedCom =CompanyRepository.Add(company);
+            bool isAddemEmp=EmployeeRepository.Add(employee);
+
+            if(isAddedCom && isAddemEmp)
+            {
+                return View("Index");
+            }
+
            //return RedirectToAction("Index" , "Login");
            return View();
         }

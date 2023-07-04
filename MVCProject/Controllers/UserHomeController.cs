@@ -4,7 +4,7 @@ namespace MVCProject.Controllers
 {
     public class UserHomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             return View();
         }

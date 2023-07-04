@@ -9,6 +9,9 @@ namespace MVCProject.AutoMappers
         public MappingProfile()
         {
             CreateMap<EmployeeLoginVM, Employee>();   
+            CreateMap<EmployeeRegisterVM, Employee>();   
+            CreateMap<CompanyRegisterVM, Company>();   
+
         }
     }
 }
