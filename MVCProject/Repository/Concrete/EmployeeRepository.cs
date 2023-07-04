@@ -16,5 +16,10 @@ namespace BLL.Repository
         {
             this.dbContext = dbContext;
         }
+
+        public Employee? GetEmployeeByMailAndPassword(string email, string password)
+        {
+           return dbContext.Employees.FirstOrDefault(s => s.Mail == email && s.Password == password);
+        }
     }
 }
