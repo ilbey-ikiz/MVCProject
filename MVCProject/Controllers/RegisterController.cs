@@ -13,13 +13,15 @@ namespace MVCProject.Controllers
     {
         IEmployeeRepository EmployeeRepository;
         ICompanyRepository CompanyRepository;
-        IValidator<EmployeeCompanyVM> validator;
+        IValidator<EmployeeRegisterVM> empValidator;
+        IValidator<CompanyRegisterVM> comValidator;
         IMapper mapper;
-        public RegisterController(IEmployeeRepository empRep , ICompanyRepository comRep , IMapper mapper , IValidator<EmployeeCompanyVM> validator)
+        public RegisterController(IEmployeeRepository empRep , ICompanyRepository comRep , IMapper mapper , IValidator<EmployeeRegisterVM> empValidator , IValidator<CompanyRegisterVM> comValidator )
         {
             EmployeeRepository = empRep;
             CompanyRepository = comRep; 
-            this.validator = validator;
+            this.empValidator = empValidator;
+            this.comValidator = comValidator;
             this.mapper = mapper;
         }
         public IActionResult Index()
@@ -30,8 +32,9 @@ namespace MVCProject.Controllers
         [HttpPost]
         public IActionResult Index(EmployeeCompanyVM ecVM)
         {
-            var result = validator.Validate(ecVM);
-            if (!result.IsValid)
+            var result = empValidator.Validate(ecVM.Employee);
+            var result2 = comValidator.Validate(ecVM.Company);
+            if (!result.IsValid && !result2.IsValid)
             {
                 result.AddToModelState(this.ModelState);
                 return View("Index", ecVM);
@@ -42,9 +45,9 @@ namespace MVCProject.Controllers
             var employee =mapper.Map<Employee>(ecVM.Employee);
             employee.CompanyId = company.Id;
             employee.EmployeeType = Entities.Enums.EmployeeType.Admin;
-            bool isAddemEmp=EmployeeRepository.Add(employee);
+            bool isAddedEmp=EmployeeRepository.Add(employee);
 
-            if(isAddedCom && isAddemEmp)
+            if(isAddedCom && isAddedEmp)
             {
                 // return new EmptyResult();
                 Thread.Sleep(10000);

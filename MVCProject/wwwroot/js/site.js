@@ -104,3 +104,38 @@ function Login() {
         }
     });
 }
+
+function CheckValidCompany() {
+    var companyInputList = $('.companyData');
+    let button = $("#companyNextButton")
+    let j = 0;
+    for (var i = 0; i < companyInputList.length; i++) {
+
+        if ($(companyInputList[i]).is('.valid')) {
+            j++;
+        }
+    }
+    if (j == companyInputList.length) {
+        button.prop('disabled', false ); 
+    } else {
+        button.prop('disabled', true); 
+    }
+}
+
+function CheckValidEmployee() {
+    var employeeInputList = $('.employeeData');
+    let button1 = $("#employeeNextButton")
+    let k = 0;
+    for (var i = 0; i < employeeInputList.length; i++) {
+
+        if ($(employeeInputList[i]).is('.valid')) {
+            k++;
+        }
+    }
+    if (k == employeeInputList.length) {
+        button1.prop('disabled', false);
+    } else {
+        button1.prop('disabled', true);
+    }
+
+}

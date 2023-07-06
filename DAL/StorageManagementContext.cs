@@ -11,7 +11,7 @@ namespace DAL
 {
     public class StorageManagementContext:DbContext
     {
-        public StorageManagementContext(DbContextOptions options):base(options)
+        public StorageManagementContext(DbContextOptions<StorageManagementContext> options):base(options)
         {
             
         }

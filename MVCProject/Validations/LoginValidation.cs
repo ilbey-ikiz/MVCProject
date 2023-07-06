@@ -8,6 +8,7 @@ namespace MVCProject.Validations
         public LoginValidation()
         {
             RuleFor(s => s.Mail).NotEmpty();
+            
         }
     }
 }
