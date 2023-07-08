@@ -27,6 +27,8 @@ builder.Services.AddFluentValidation(fv =>
     });
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+builder.Services.AddSession(x => x.IdleTimeout = TimeSpan.FromSeconds(60));
+
 
 var app = builder.Build();
 
@@ -45,6 +47,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

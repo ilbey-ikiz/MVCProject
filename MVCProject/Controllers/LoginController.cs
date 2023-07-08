@@ -31,26 +31,27 @@ namespace MVCProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(EmployeeLoginVM userVm)
         {
-            Employee employee = mapper.Map<Employee>(userVm);   
+            Employee employee = mapper.Map<Employee>(userVm);
             Employee employeeLogin = employeeRepository.GetEmployeeByMailAndPassword(userVm.Mail, userVm.Password);
 
             if (!ModelState.IsValid)
             {
                 return View("Index", userVm);
             }
-            if(employeeLogin is null)
+            if (employeeLogin is null)
             {
                 ViewBag.Info = "Hatali";
                 return View("Index", userVm);
             }
-            return RedirectToAction("Index" , "StorageController");
+            return RedirectToAction("Index", "UserHome");
         }
 
         public IActionResult IsPeronExistControl(EmployeeLoginVM loginVM)
         {
-            Employee employee =employeeRepository.GetEmployeeByMailAndPassword(loginVM.Mail, loginVM.Password);
+            Employee employee = employeeRepository.GetEmployeeByMailAndPassword(loginVM.Mail, loginVM.Password);
             if (employee is not null)
             {
+                HttpContext.Session.SetString("Id", $"{employee.Id}");
                 return Json(employee.Id);
             }
             return Json("fail");

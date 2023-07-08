@@ -74,16 +74,6 @@ $(document).ready(function () {
 
 });
 
-function GetSuccess() {
-    $.ajax({
-        url: "/Register/Success",
-        type: "get",
-        success: function (response) {
-            $("#successFeield").html(response)
-        }
-    });
-}
-
 
 function Login() {
     let person = {
