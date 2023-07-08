@@ -12,7 +12,7 @@ namespace MVCProject.Models
         public string Phone { get; set; }
        
         public string Password { get; set; }
-        [Compare("Password",ErrorMessage ="Sifreler Eslesmiyor")]
+        //[Compare("Password",ErrorMessage ="Sifreler Eslesmiyor")]
         public string PasswordConfirm { get; set; }
     }
 }

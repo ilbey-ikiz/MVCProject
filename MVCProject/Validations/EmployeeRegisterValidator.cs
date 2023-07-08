@@ -14,7 +14,7 @@ namespace MVCProject.Validations
             RuleFor(s => s.Mail).NotEmpty().NotNull();
             RuleFor(s => s.Phone).NotEmpty().NotNull();
             RuleFor(s => s.Password).NotEmpty().NotNull();
-            RuleFor(s => s.PasswordConfirm).Equal(s => s.Password).WithMessage("Eslesmiyor.");
+            RuleFor(s => s.PasswordConfirm).NotNull().NotEmpty().Equal(s => s.Password).WithMessage("Eslesmiyor.");
             
 
         }

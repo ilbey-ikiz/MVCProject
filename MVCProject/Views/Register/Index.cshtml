@@ -52,14 +52,7 @@
                                         <span asp-validation-for="Company.Phone" class="text-danger"></span>
                                     </div>
                                 </div>
-                                @if (ViewBag.Enabled == "enabled")
-                                {
-                                    <input type="button" name="next" class="btn btn-primary next action-button " value="Next Step" id="companyNextButton" />
-                                }
-                                else
-                                {
                                     <input type="button" disabled name="next" class="btn btn-primary next action-button " value="Next Step" id="companyNextButton" />
-                                }
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -86,7 +79,7 @@
                                         <span asp-validation-for="Employee.Password"></span>
                                     </div>
                                     <div class="control-group">
-                                        <input id="confirmpassword" type="password" asp-for="Employee.PasswordConfirm" name="confirmpassword" placeholder="Confirm password." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <input id="confirmpassword" type="password" asp-for="Employee.PasswordConfirm" placeholder="Confirm password." class="employeeData" onblur="CheckValidEmployee()" />
                                         <label for="confirmpassword">Confirm Password</label>
                                         <span asp-validation-for="Employee.PasswordConfirm"></span>
                                     </div>

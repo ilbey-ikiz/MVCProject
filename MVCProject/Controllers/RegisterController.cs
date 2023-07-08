@@ -24,20 +24,19 @@ namespace MVCProject.Controllers
             this.comValidator = comValidator;
             this.mapper = mapper;
         }
-        public IActionResult Index()
+        public IActionResult Index(EmployeeCompanyVM ecVM)
         {
-            return View();
+            return View(ecVM);
         }
 
         [HttpPost]
-        public IActionResult Index(EmployeeCompanyVM ecVM)
+        public IActionResult Index(EmployeeCompanyVM ecVM, int deneme)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Enabled = "enabled";
-                return View("Index", ecVM);
+            
+                return NoContent(); 
             }
-         
             var company =mapper.Map<Company>(ecVM.Company);
             bool isAddedCom =CompanyRepository.Add(company);
             var employee =mapper.Map<Employee>(ecVM.Employee);
@@ -47,7 +46,7 @@ namespace MVCProject.Controllers
 
             if(isAddedCom && isAddedEmp)
             {
-                Thread.Sleep(10000);
+                //Thread.Sleep(10000);
                 //return RedirectToAction("Index", "Login");
                 return NoContent();
             }
