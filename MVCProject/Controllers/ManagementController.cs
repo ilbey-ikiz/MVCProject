@@ -2,7 +2,7 @@
 
 namespace MVCProject.Controllers
 {
-    public class ToDoListController : Controller
+    public class ManagementController : Controller
     {
         public IActionResult Index()
         {
