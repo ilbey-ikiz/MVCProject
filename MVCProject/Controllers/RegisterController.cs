@@ -32,14 +32,12 @@ namespace MVCProject.Controllers
         [HttpPost]
         public IActionResult Index(EmployeeCompanyVM ecVM)
         {
-            var result = empValidator.Validate(ecVM.Employee);
-            var result2 = comValidator.Validate(ecVM.Company);
-            if (!result.IsValid && !result2.IsValid)
+            if (!ModelState.IsValid)
             {
-                result.AddToModelState(this.ModelState);
+                ViewBag.Enabled = "enabled";
                 return View("Index", ecVM);
             }
-
+         
             var company =mapper.Map<Company>(ecVM.Company);
             bool isAddedCom =CompanyRepository.Add(company);
             var employee =mapper.Map<Employee>(ecVM.Employee);
@@ -49,14 +47,11 @@ namespace MVCProject.Controllers
 
             if(isAddedCom && isAddedEmp)
             {
-                // return new EmptyResult();
                 Thread.Sleep(10000);
-                return RedirectToAction("Index", "Login");
-
+                //return RedirectToAction("Index", "Login");
+                return NoContent();
             }
-
-           //return RedirectToAction("Index" , "Login");
-           return View();
+           return NoContent();
         }
     }
 }

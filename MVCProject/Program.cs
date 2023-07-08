@@ -22,8 +22,8 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>)
 builder.Services.AddFluentValidation(fv =>
 {
     fv.RegisterValidatorsFromAssemblyContaining<Program>();
-    fv.DisableDataAnnotationsValidation=true;
-    fv.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("en");
+    //fv.DisableDataAnnotationsValidation=true;
+    //fv.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("en");
     });
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

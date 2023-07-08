@@ -7,15 +7,15 @@ namespace MVCProject.Validations
     {
         public EmployeeRegisterValidator()
         {
-            RuleFor(s => s.FirstName).NotEmpty().NotNull().Must(ContainsNumber);
+            RuleFor(s => s.FirstName).NotEmpty().NotNull().Must(ContainsNumber).WithMessage("hata");
             RuleFor(s => s.LastName).NotEmpty().NotNull().MaximumLength(5);
             RuleFor(x => x.BirthDate)
-            .NotEmpty()
-            .Must(BeAValidDate).WithMessage("Geçerli bir tarih girin.");
+            .LessThan(DateTime.Today).WithMessage("hata");
             RuleFor(s => s.Mail).NotEmpty().NotNull();
             RuleFor(s => s.Phone).NotEmpty().NotNull();
-            RuleFor(s => s.Password).NotEmpty().NotNull().NotEqual(s=> s.PasswordConfirm);
-            RuleFor(s => s.PasswordConfirm).NotEqual(s => s.Password);
+            RuleFor(s => s.Password).NotEmpty().NotNull();
+            RuleFor(s => s.PasswordConfirm).Equal(s => s.Password).WithMessage("Eslesmiyor.");
+            
 
         }
 

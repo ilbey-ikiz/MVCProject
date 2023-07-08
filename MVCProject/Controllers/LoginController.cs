@@ -37,7 +37,7 @@ namespace MVCProject.Controllers
 
             if (!result.IsValid)
             {
-                result.AddToModelState(this.ModelState);
+                //result.AddToModelState(this.ModelState);
                 return View("Index", userVm);
             }
             if(employeeLogin is null)
