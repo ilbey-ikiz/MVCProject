@@ -14,10 +14,10 @@ namespace MVCProject.Controllers
 {
     public class LoginController : Controller
     {
-        IValidator<Employee> validator;
+        IValidator<EmployeeLoginVM> validator;
         IEmployeeRepository employeeRepository;
         IMapper mapper;
-        public LoginController(IValidator<Employee> validator, IEmployeeRepository employeeRepository, IMapper map)
+        public LoginController(IValidator<EmployeeLoginVM> validator, IEmployeeRepository employeeRepository, IMapper map)
         {
             this.validator = validator;
             this.employeeRepository = employeeRepository;
@@ -25,19 +25,17 @@ namespace MVCProject.Controllers
         }
         public IActionResult Index()
         {
-            return View(new EmployeeLoginVM());
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(EmployeeLoginVM userVm)
         {
             Employee employee = mapper.Map<Employee>(userVm);   
-            var result = await validator.ValidateAsync(employee);
             Employee employeeLogin = employeeRepository.GetEmployeeByMailAndPassword(userVm.Mail, userVm.Password);
 
-            if (!result.IsValid)
+            if (!ModelState.IsValid)
             {
-                //result.AddToModelState(this.ModelState);
                 return View("Index", userVm);
             }
             if(employeeLogin is null)

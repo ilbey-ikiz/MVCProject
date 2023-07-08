@@ -24,13 +24,13 @@ namespace MVCProject.Controllers
             this.comValidator = comValidator;
             this.mapper = mapper;
         }
-        public IActionResult Index(EmployeeCompanyVM ecVM)
+        public IActionResult Index()
         {
-            return View(ecVM);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Index(EmployeeCompanyVM ecVM, int deneme)
+        public IActionResult Index(EmployeeCompanyVM ecVM)
         {
             if (!ModelState.IsValid)
             {
