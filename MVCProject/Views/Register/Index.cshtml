@@ -1,0 +1,189 @@
+﻿@model EmployeeCompanyVM
+
+<link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+<!-- MultiStep Form -->
+<div class="container-fluid">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Register Your Company</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform" method="post" asp-action="Index" method="post">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Company</strong></li>
+                                <li id="personal"><strong>Administrator</strong></li>
+                                <li id="confirm"><strong>Finish</strong></li>
+                            </ul>
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Company Information</h2>
+                                    <div class="control-group">
+                                        <input id="companyname" type="text" asp-for="Company.CompanyName" placeholder="Enter your company name." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="companyname">Company Name</label>
+                                        <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="sector" type="text" asp-for="Company.Sector" placeholder="Enter your company sector." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="sector">Sector</label>
+                                        <span asp-validation-for="Company.Sector" class="text-danger"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="address" type="text" asp-for="Company.Address" placeholder="Enter your company address." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="address">Address</label>
+                                        <span asp-validation-for="Company.Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="country" type="text" asp-for="Company.Country" placeholder="Enter the country where your company is located." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="country">Country</label>
+                                        <span asp-validation-for="Company.Country" class="text-danger"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="city" type="text" asp-for="Company.City" placeholder="Enter the city where your company is located." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="city">City</label>
+                                        <span asp-validation-for="Company.City" class="text-danger"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="companyphone" type="tel" asp-for="Company.Phone" placeholder="Enter your company contact number." onblur="CheckValidCompany()" class="companyData" />
+                                        <label for="companyphone">Company Phone</label>
+                                        <span asp-validation-for="Company.Phone" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                    <input type="button" disabled name="next" class="btn btn-primary next action-button " value="Next Step" id="companyNextButton" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Administrator Information</h2>
+                                    <p>You have to add one administrator for your company. </p>
+                                    <div class="control-group">
+                                        <input id="email" type="email" asp-for="Employee.Mail" placeholder="Enter administrator email address for login id." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="email">Email</label>
+                                        <span asp-validation-for="Employee.Mail"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="firstname" type="text" asp-for="Employee.FirstName" placeholder="Enter administrator first name." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="firstname">First Name</label>
+                                        <span asp-validation-for="Employee.FirstName"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="lastname" type="text" asp-for="Employee.LastName" placeholder="Enter administrator last name." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="lastname">Last Name</label>
+                                        <span asp-validation-for="Employee.LastName"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="password" type="password" asp-for="Employee.Password" placeholder="Enter administrator password." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="password">Password</label>
+                                        <span asp-validation-for="Employee.Password"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="confirmpassword" type="password" asp-for="Employee.PasswordConfirm" placeholder="Confirm password." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="confirmpassword">Confirm Password</label>
+                                        <span asp-validation-for="Employee.PasswordConfirm"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="birthDate" type="date" asp-for="Employee.BirthDate" style=" color:#8c8c8c;font-weight: normal;" placeholder="Enter administrator birth date." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="birthDate">Birth Date</label>
+                                        <span asp-validation-for="Employee.BirthDate"></span>
+                                    </div>
+                                    <div class="control-group">
+                                        <input id="admintel" type="tel" asp-for="Employee.Phone" placeholder="Enter administrator contact no." class="employeeData" onblur="CheckValidEmployee()" />
+                                        <label for="admintel">Phone</label>
+                                        <span asp-validation-for="Employee.Phone"></span>
+                                    </div>
+
+                                </div>
+                                <input type="button" name="previous" class="btn btn-secondary mx-4 previous action-button-previous" value="Previous" />
+                                <input type="submit" disabled name="next" class="btn btn-primary mx-4 next action-button" value="Next Step" id="employeeNextButton" />
+                            </fieldset>
+                            <!--
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Payment Information</h2>
+                                    <div class="radio-group">
+                                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
+                                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div>
+                                        <br>
+                                    </div>
+                                    <label class="pay">Card Holder Name*</label>
+                                    <input type="text" name="holdername" placeholder="" />
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <label class="pay">Card Number*</label>
+                                            <input type="text" name="cardno" placeholder="" />
+                                        </div>
+                                        <div class="col-3">
+                                            <label class="pay">CVC*</label>
+                                            <input type="password" name="cvcpwd" placeholder="***" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="pay">Expiry Date*</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select class="list-dt" id="month" name="expmonth">
+                                                <option selected>Month</option>
+                                                <option>January</option>
+                                                <option>February</option>
+                                                <option>March</option>
+                                                <option>April</option>
+                                                <option>May</option>
+                                                <option>June</option>
+                                                <option>July</option>
+                                                <option>August</option>
+                                                <option>September</option>
+                                                <option>October</option>
+                                                <option>November</option>
+                                                <option>December</option>
+                                            </select>
+                                            <select class="list-dt" id="year" name="expyear">
+                                                <option selected>Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                            </fieldset>
+                            -->
+
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Success !</h2>
+                                    <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5>You Have Successfully Register.</h5>
+                                        </div>
+
+                                    </div>
+                                    <div class="row justify-content-center ">
+                                        <div class="col-7 text-center w-100 ">
+                                            <a class="btn btn-success mt-4 w-50">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

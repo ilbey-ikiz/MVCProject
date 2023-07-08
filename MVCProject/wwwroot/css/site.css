@@ -16,3 +16,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.nav-btn:hover {
+    box-shadow: 0 0 0 5px #FFC107, 0 0 0 5px #616161;
+}
+
+.nav-elements {
+    transition: all 0.1s ease;
+}
+
+    .nav-elements:hover {
+        transform: scale(1.2);
+    }
