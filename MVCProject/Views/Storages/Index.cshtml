@@ -1,3 +1,38 @@
-﻿@{
+﻿@using MVCProject.Entities.Enums;
+@{
     Layout = "_UserLayout";
 }
+@model StorageVM
+<script src="~/js/Storage.js" asp-append-version="true"></script>
+
+<div>
+    <div class="text-center">
+        <h1> <strong>Storage List</strong></h1>
+    </div>
+    @if (Model.EmployeeType == EmployeeType.Admin)
+    {
+    <div class="text-end">
+            <a class="btn btn-warning" onclick="GetList()"><strong>GetList</strong></a>
+            <a class="btn btn-warning" onclick="CreateStoragePage()"><strong>+ Create New Storage</strong></a>
+    </div>
+    }
+    <div id="message"></div>
+    <div id="createStorage"></div>
+    <div class="card-columns">
+        <div class="card border-0 pt-4">
+            <div class="card-body border-bottom border-5 border-dark">
+                <div class="d-flex justify-content-between px-3">
+                    <div class="d-flex align-items-center justify-content-center fs-5">
+                        Storage Name
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center fs-5">
+                        Storage Id
+                    </div>
+                    <div class="me-5 fs-5">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="list"></div>
+    </div>
+</div>

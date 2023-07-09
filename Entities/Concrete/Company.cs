@@ -2,6 +2,10 @@
 
 public class Company:BaseEntity
 {
+    public Company()
+    {
+        Employees = new HashSet<Employee>();
+    }
     public string CompanyName { get; set; }
     public string Sector { get; set; }
     public string Country { get; set; }

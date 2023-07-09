@@ -101,15 +101,15 @@ namespace DAL.Migrations
                 name: "ColumnProduct",
                 columns: table => new
                 {
-                    ColumnId = table.Column<int>(type: "int", nullable: false),
+                    ColumnsId = table.Column<int>(type: "int", nullable: false),
                     ProductsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ColumnProduct", x => new { x.ColumnId, x.ProductsId });
+                    table.PrimaryKey("PK_ColumnProduct", x => new { x.ColumnsId, x.ProductsId });
                     table.ForeignKey(
-                        name: "FK_ColumnProduct_Columns_ColumnId",
-                        column: x => x.ColumnId,
+                        name: "FK_ColumnProduct_Columns_ColumnsId",
+                        column: x => x.ColumnsId,
                         principalTable: "Columns",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -140,30 +140,6 @@ namespace DAL.Migrations
                     table.ForeignKey(
                         name: "FK_ColumnStorage_Storages_StoragesId",
                         column: x => x.StoragesId,
-                        principalTable: "Storages",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductStorage",
-                columns: table => new
-                {
-                    ProductsId = table.Column<int>(type: "int", nullable: false),
-                    StorageId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductStorage", x => new { x.ProductsId, x.StorageId });
-                    table.ForeignKey(
-                        name: "FK_ProductStorage_Products_ProductsId",
-                        column: x => x.ProductsId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductStorage_Storages_StorageId",
-                        column: x => x.StorageId,
                         principalTable: "Storages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -212,11 +188,6 @@ namespace DAL.Migrations
                 name: "IX_EmployeeStorage_StoragesId",
                 table: "EmployeeStorage",
                 column: "StoragesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductStorage_StorageId",
-                table: "ProductStorage",
-                column: "StorageId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -231,16 +202,13 @@ namespace DAL.Migrations
                 name: "EmployeeStorage");
 
             migrationBuilder.DropTable(
-                name: "ProductStorage");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Columns");
 
             migrationBuilder.DropTable(
                 name: "Employees");
-
-            migrationBuilder.DropTable(
-                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Storages");

@@ -4,6 +4,10 @@ namespace MVCProject.Entities.Concrete
 {
     public class Employee:BaseEntity
     {
+        public Employee()
+        {
+            Storages = new HashSet<Storage>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

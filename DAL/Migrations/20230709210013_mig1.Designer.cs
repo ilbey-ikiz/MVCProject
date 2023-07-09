@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(StorageManagementContext))]
-    [Migration("20230706142511_mig1")]
+    [Migration("20230709210013_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,13 +26,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("ColumnProduct", b =>
                 {
-                    b.Property<int>("ColumnId")
+                    b.Property<int>("ColumnsId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ColumnId", "ProductsId");
+                    b.HasKey("ColumnsId", "ProductsId");
 
                     b.HasIndex("ProductsId");
 
@@ -216,26 +216,11 @@ namespace DAL.Migrations
                     b.ToTable("Storages");
                 });
 
-            modelBuilder.Entity("ProductStorage", b =>
-                {
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StorageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductsId", "StorageId");
-
-                    b.HasIndex("StorageId");
-
-                    b.ToTable("ProductStorage");
-                });
-
             modelBuilder.Entity("ColumnProduct", b =>
                 {
                     b.HasOne("MVCProject.Entities.Concrete.Column", null)
                         .WithMany()
-                        .HasForeignKey("ColumnId")
+                        .HasForeignKey("ColumnsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -285,21 +270,6 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("ProductStorage", b =>
-                {
-                    b.HasOne("MVCProject.Entities.Concrete.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MVCProject.Entities.Concrete.Storage", null)
-                        .WithMany()
-                        .HasForeignKey("StorageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MVCProject.Entities.Concrete.Company", b =>

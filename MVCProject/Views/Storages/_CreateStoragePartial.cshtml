@@ -1,0 +1,17 @@
+﻿@model CreateStorageVM
+<script src="~/js/Storage.js" asp-append-version="true"></script>
+<div>
+    <div>
+    <input type="text" value="" placeholder="Storage Name" asp-for="StorageName" />
+    </div>
+    <br />
+    @for (int i = 0; i < 8; i++)
+    {
+        <input class="m-1" type="text" placeholder="Column-@(i + 1)" asp-for="columnNameList[i]" />
+    }
+    <br />
+    <br />
+    <div>
+        <a class="btn btn-success" onclick="CreateStorage()">Create</a>
+    </div>
+</div>
