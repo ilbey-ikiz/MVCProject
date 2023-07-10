@@ -1,7 +1,7 @@
 ﻿@model EmployeeCompanyVM
 
 <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
-<script src="~/js/register.js asp-append-version="true"></script>
+
 <!-- MultiStep Form -->
 <div class="container-fluid">
     <div class="row justify-content-center mt-0">
@@ -182,7 +182,8 @@
         </div>
     </div>
 </div>
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/register.js" asp-append-version="true"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

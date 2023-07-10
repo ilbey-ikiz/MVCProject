@@ -1,4 +1,4 @@
-﻿$(document).ready(GetList());
+﻿$(document).ready(function () { GetList(); });
 
 function GetList() {
     $.ajax({
