@@ -1,5 +1,6 @@
 ﻿using DAL;
 using MVCProject.Entities.Concrete;
+using MVCProject.Entities.Enums;
 using MVCProject.Repository.Abstract;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Repository
 {
-    public class EmployeeRepository:GenericRepository<Employee> , IEmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
         private readonly StorageManagementContext dbContext;
         public EmployeeRepository(StorageManagementContext dbContext) : base(dbContext)
@@ -19,7 +20,19 @@ namespace BLL.Repository
 
         public Employee? GetEmployeeByMailAndPassword(string email, string password)
         {
-           return dbContext.Employees.FirstOrDefault(s => s.Mail == email && s.Password == password);
+            return dbContext.Employees.FirstOrDefault(s => s.Mail == email && s.Password == password);
         }
+
+        public IEnumerable<Employee> GetEmployeesByCompanyIdAdmins(int comId)
+        {
+            return dbContext.Employees.Where(s => s.CompanyId == comId && s.EmployeeType==EmployeeType.Admin);
+        }
+
+        public IEnumerable<Employee> GetEmployeesByCompanyIdEmployees(int comId)
+        {
+            return dbContext.Employees.Where(s => s.CompanyId == comId && s.EmployeeType != EmployeeType.Admin);
+        }
+
+
     }
 }

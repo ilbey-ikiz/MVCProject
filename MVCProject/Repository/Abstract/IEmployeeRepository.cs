@@ -7,5 +7,7 @@ namespace MVCProject.Repository.Abstract
     {
         public Employee GetEmployeeByMailAndPassword(string email , string password);
 
+        public IEnumerable<Employee> GetEmployeesByCompanyIdAdmins(int comId);
+        public IEnumerable<Employee> GetEmployeesByCompanyIdEmployees(int comId);
     }
 }

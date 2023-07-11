@@ -1,3 +1,16 @@
-﻿@{
-    Layout = "_UserLayout";
-}
+﻿
+<div class="text-center m-4">
+    <button class="btn btn-success " onclick="GetCreatEmployee()">Add Employee</button>
+</div>
+
+<div class="text-center m-4">
+    <button class="btn btn-success " onclick="GetList()">Employee List</button>
+</div>
+
+<div id="list"></div>
+<div id="addEmployee"></div>
+<div id="update"></div>
+<div id="error"></div>
+
+
+<script src="~/js/management.js" asp-append-version="true"></script>

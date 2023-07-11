@@ -7,6 +7,8 @@ namespace MVCProject.Controllers
         public IActionResult Index()
         {
             string data = HttpContext.Session.GetString("Id");
+
+
             return View();
         }
     }

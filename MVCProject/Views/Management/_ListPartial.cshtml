@@ -1,0 +1,92 @@
+﻿
+@model (IEnumerable<Employee> adminList , IEnumerable<Employee> employeList)
+
+<table class="table table-success">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Mail
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Employee employee in Model.adminList)
+        {
+            <tr>
+                <td>
+                    @employee.FirstName
+                </td>
+                <td>
+                    @employee.LastName
+                </td>
+                <td>
+                    @employee.Mail
+                </td>
+                <td>
+                    @employee.Phone
+                </td>
+                <td>
+                    <a class="btn btn-primary">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-success">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Mail
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Actions
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Employee employee in Model.employeList)
+        {
+            <tr>
+                <td>
+                    @employee.FirstName
+                </td>
+                <td>
+                    @employee.LastName
+                </td>
+                <td>
+                    @employee.Mail
+                </td>
+                <td>
+                    @employee.Phone
+                </td>
+                <td>
+                    <a class="btn btn-primary">Update</a>
+                    <a class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/management.js" asp-append-version="true"></script>
